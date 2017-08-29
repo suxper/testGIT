@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+ <title>FG Asta</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+<script type="text/javascript" src="js/common.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$('.sux-box').draggable({revert: 'valid'});
+	$('.sux-box').droppable();
+	handleGeneralSearch();
+	checkLocalStorage();
+});
+</script>
+</head>
+	<div class="sux-top">
+	<button id="reset" onclick="deleteLocalStorage();">Reset</button>
+		<div class="center padding">
+			<input id="generalSearch" class="search-input" type="text" placeholder="Cerca Giocatore" />
+			<button class="button" onclick="filtraRisultati();">Filtra</button>
+			<br>
+			<input id="roleLink" type="checkbox" class="" value="RoleLink">Collega i Ruoli
+			<div id="roleFilter" class="roleFilter">
+				<input type="checkbox" class="POR" value="POR">POR
+				<input type="checkbox" class="DD" value="DD">DD
+				<input type="checkbox" class="DC" value="DC">DC
+				<input type="checkbox" class="DS" value="DS">DS
+				<input type="checkbox" class="E" value="E">E
+				<input type="checkbox" class="M" value="M">M
+				<input type="checkbox" class="C" value="C">C
+				<input type="checkbox" class="T" value="T">T
+				<input type="checkbox" class="W" value="W">W
+				<input type="checkbox" class="A" value="A">A
+				<input type="checkbox" class="PC" value="PC">PC
+				<label> Quotazione da: </label><input type="text" id="quotDa">a: <input type="text" id="quotA">
+				<label> Squadra: </label><select id="teamFilter">
+				</select>
+			</div>
+		</div>
+	</div>
+	<body>
+		<article>
+		<div id="playerSelected" class="sux-container relative top"></div>
+		<div id="resultSearch" class="sux-container relative top">
+		</div>
+		<div id="teamContainer1" class="sux-container relative top">
+			<div class="sux-box" id="FIF"><label id="nomeSquadra_FIF">Final Fantasy</label> <label id="credit_FIF" creditiiniziali="1000" class="credit">1000</label></div>
+			<div class="sux-box" id="SET"><label id="nomeSquadra_SET">Sephiroth Team</label> <label id="credit_SET" creditiiniziali="1000" class="credit">1000</label></div>
+			<div class="sux-box" id="POB"><label id="nomeSquadra_POB">Polar Bear</label> <label id="credit_POB" creditiiniziali="1000" class="credit">1000</label></div>
+		</div>
+		<div id="teamContainer2" class="sux-container relative top">	
+			<div class="sux-box" id="PET"><label id="nomeSquadra_PET">Pepsi Team</label> <label id="credit_PET" creditiiniziali="1000" class="credit">1000</label></div>		
+			<div class="sux-box" id="LET"><label id="nomeSquadra_LET">Legendary Team</label> <label id="credit_LET" creditiiniziali="1000" class="credit">1000</label></div>
+			<div class="sux-box" id="MAT"><label id="nomeSquadra_MAT">Maccheroni Team</label> <label id="credit_MAT" creditiiniziali="1000" class="credit">1000</label></div>
+		</div>
+		</article>
+	</body>
+	<footer id="news">
+	</footer>
+	<div id="menuGiocatore" title="Giocatore" class="dialog" style="display:none;">
+		<label id="descrizione"></label>
+		<br>
+	  	<button class="rimuovi" onclick="rimuoviCalciatore();" id="rimuoviCalciatore">Rimuovi</button>
+	  	<input id="idGiocatoreRimuovi" type="hidden">
+	  	<input id="idSquadraRimuovi" type="hidden">
+	  	<input id="idQuotazioneRimuovi" type="hidden">
+	</div>	
+</html>
+
